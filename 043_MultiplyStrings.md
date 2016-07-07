@@ -1,9 +1,6 @@
 **题意: 求大整数乘法，要求不可以将string转为integer，也不可以使用biginteger。**
 
 ####有符号大整数运算的实现
-
-
-
 ```
 class Solution {
 public:
