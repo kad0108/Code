@@ -53,7 +53,7 @@ public:
 };
 ```
 <br/>
-**AC：递推思想，找到最远能到达的位置maxreach，那么比这个近的位置都能到达了**
+**AC：递推思想O(n)，找到最远能到达的位置maxreach，那么比这个近的位置都能到达了**
 ```
 class Solution {
 public:
