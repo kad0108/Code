@@ -49,7 +49,7 @@ public:
 };
 ```
 <br/>
-**AC：参考discuss**
+**AC：O(n)参考discuss**
 
 The pattern was that:
 
