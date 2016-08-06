@@ -2,7 +2,7 @@
 
 **直接能想到用位运算好开森~\(^o^)/~**
 
-**效率比暴力不知道高到哪里去~~，while循环最多循环16次，所以复杂度是O(1)。**
+**位运算：效率比暴力不知道高到哪里去~~，比二分的结果也好，while循环最多循环16次，所以复杂度是O(1)。**
 ```
 class Solution {
 public:
@@ -28,6 +28,24 @@ public:
             b >>= 1;
         }
         return a;
+    }
+};
+```
+<br/>
+**二分O(logn)**
+```
+class Solution {
+public:
+    int mySqrt(int x) {
+        long long l = 1, r = x;
+        while(l <= r)
+        {
+            long long mid = (l + r) / 2;//需要注意这里求和也可能会爆int
+            if(mid * mid == x) return mid;
+            if(mid * mid > x) r = mid - 1;
+            else l = mid + 1;
+        }
+        return r;
     }
 };
 ```
