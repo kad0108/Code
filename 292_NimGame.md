@@ -4,8 +4,8 @@
 ```
 For example, if there are 4 stones in the heap, then you will never win the game: no matter 1, 2, or 3 stones you remove, the last stone will always be removed by your friend.
 ```
-
-**TLE解法：思想是如果小伙伴赢，那么你肯定输了，所以判断n-1、n-2、n-3是否能赢。但递归层数太多。**
+<br/>
+**TLE解法：思想是如果小伙伴赢，那么你肯定输了，所以判断```n-1、n-2、n-3```是否能赢。但递归层数太多。**
 
 ```
 class Solution {
