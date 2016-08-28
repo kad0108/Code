@@ -1,7 +1,7 @@
 **题意：求出二叉树的最大深度。**
 
 <br/>
-**直接暴力dfs找最大深度**
+**解法一：直接暴力dfs找最大深度**
 
 ```
 /**
@@ -41,7 +41,7 @@ public:
 };
 ```
 <br/>
-**每个节点的深度都是其左右孩子的最大深度＋1**
+**解法二：每个节点的深度都是其左右孩子的最大深度＋1**
 ```
 class Solution{
 public:
@@ -62,3 +62,30 @@ public:
 <br/>
 **类似题目：111. Minimum Depth of Binary Tree。不同的是，如果节点只有一个孩子，那么最小深度就是孩子的深度。**
 
+```
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int dfs(TreeNode *root)
+    {
+        if(root == NULL) return 0x7fffffff;
+        if(root->left == NULL && root->right == NULL) 
+        {
+            return 1;
+        }
+        return min(dfs(root->left), dfs(root->right)) + 1;
+    }
+    int minDepth(TreeNode* root) {
+        if(root == NULL) return 0;
+        return dfs(root);
+    }
+};
+```
