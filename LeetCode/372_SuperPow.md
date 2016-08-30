@@ -31,7 +31,7 @@ a^b
 
 **参考**： 
 
-[Euler's theorem from Wikipedia](https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86_(%E6%95%B0%E8%AE%BA)
+[Euler's theorem from Wikipedia](https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86_(%E6%95%B0%E8%AE%BA))
 
 [Fermat's little theorem from Wikipedia](https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86)
 
