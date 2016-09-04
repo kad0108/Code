@@ -93,6 +93,7 @@ public:
 };
 ```
 **注意：**
+
 1. 把trie树开成普通的自定义大小的数组，在样例words输入很大量时会RE，所以将trie定义为vector。
 
 2. 每次需要先把Trie节点加入到vector中，才能对这个节点初始化。加入节点时，```new Trie()```返回的是指针，正确写法是```trie.push_nack(Trie())```。
@@ -102,7 +103,7 @@ public:
 4. 对于样例```board=["aa"], words=["a"]```，因为board中每一个字符都会去trie树中查找，输出结果为```["a", "a"]```，所以在单词被记过之后，应该将flag标记为false，防止同一个串被多次查找到。
 
 <br/>
-**上面是用struct构造trie，这里用类构造**
+**上面是用struct构造trie，这里用类构造，根据题208. ImplementTrie。**
 ```
 class TrieNode{
 public:
@@ -177,7 +178,7 @@ public:
 ```
 
 <br/>
-**类似题目：79. Word Search**
+**系列题目：79. Word Search**
 
 **题意: 给一个矩阵，问一个单词是否出现。单词可以由临近的单元格组成，可以是垂直相邻或水平相邻，且这个单元格在组成时只能用一次。**
 
