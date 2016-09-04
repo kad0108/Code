@@ -94,10 +94,87 @@ public:
 ```
 **注意：**
 1. 把trie树开成普通的自定义大小的数组，在样例words输入很大量时会RE，所以将trie定义为vector。
+
 2. 每次需要先把Trie节点加入到vector中，才能对这个节点初始化。加入节点时，```new Trie()```返回的是指针，正确写法是```trie.push_nack(Trie())```。
+
 3. dfs在做的过程中应该对正在搜索还没有回溯的点进行标记，可以另外开一个二位数组记录，也可以使用trick，将board[i][j]赋为```'\0'```。
+
 4. 对于样例```board=["aa"], words=["a"]```，因为board中每一个字符都会去trie树中查找，输出结果为```["a", "a"]```，所以在单词被记过之后，应该将flag标记为false，防止同一个串被多次查找到。
 
+<br/>
+**上面是用struct构造trie，这里用类构造**
+```
+class TrieNode{
+public:
+    bool flag = 0;
+    TrieNode *link[26];
+    TrieNode()
+    {
+        for(int i = 0; i < 26; i++) link[i] = NULL;
+    }
+};
+class Trie{
+public:
+    TrieNode *root;
+    Trie()
+    {
+        root = new TrieNode();
+    }
+    void insert(string w)
+    {
+        TrieNode *p = root;
+        for(int i = 0; i < w.size(); i++)
+        {
+            int index = w[i] - 'a';
+            if(p->link[index] == NULL)
+            {
+                p->link[index] = new TrieNode();
+            }
+            p = p->link[index];
+        }
+        p->flag = true;
+    }
+};
+class Solution {
+public:
+    vector<string> ans;
+    void dfs(vector<vector<char>>& board, int i, int j, TrieNode *p, string w)//这里传入p不能取地址，因为深层修改会影响浅层的p
+    {
+        if(i < 0 || i >= board.size() || j < 0 || j >= board[0].size() || board[i][j] == '\0') return;
+        p = p->link[board[i][j] - 'a'];
+        if(p == NULL) return ;
+        w += board[i][j];
+        if(p->flag)
+        {
+            ans.push_back(w);
+            p->flag = false;
+        }
+        char t = board[i][j];
+        board[i][j] = '\0';
+        dfs(board, i+1, j, p, w);
+        dfs(board, i, j+1, p, w);
+        dfs(board, i-1, j, p, w);
+        dfs(board, i, j-1, p, w);
+        board[i][j] = t;
+    }
+    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
+        Trie trie;
+        for(int i = 0; i < words.size(); i++)
+        {
+            trie.insert(words[i]);
+        }
+        for(int i = 0; i < board.size(); i++)
+        {
+            for(int j = 0; j < board[0].size(); j++)
+            {
+                TrieNode *p = trie.root;
+                dfs(board, i, j, p, "");
+            }
+        }
+        return ans;
+    }
+};
+```
 
 <br/>
 **类似题目：79. Word Search**
