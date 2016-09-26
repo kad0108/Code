@@ -85,5 +85,5 @@ public:
 **注意：**
 
 1. priority_queue默认维护的是大顶堆以及less(<)，对于Node类型的优先队列，需要在struct内部重载小于号，这样优先队列才会比较两个Node类型。
-2. 重载小于号，返回a<b是大顶堆，返回```a>b```是小顶堆。也可以定义```priority_queue<int, vector<int>, greater<int>> pq```然后重载大于号来实现。
+2. 重载小于号，返回a<b是大顶堆，返回a>b是小顶堆。也可以定义```priority_queue<int, vector<int>, greater<int>> pq```然后重载大于号来实现。
 3. 向周围走时高度会比原来位置高，水不会流入，ans += 0。
