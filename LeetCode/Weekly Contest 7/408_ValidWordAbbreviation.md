@@ -12,7 +12,7 @@ word的简写写法有：
 ```
 class Solution{
 public:
-    bool validWordAbbr(string word, string abbr){
+    bool validWordAbbreviation(string word, string abbr){
         int k = 0;
         int num = 0;
         bool mark = true;
