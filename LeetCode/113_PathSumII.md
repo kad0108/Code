@@ -68,3 +68,40 @@ public:
     }
 };
 ```
+
+<br/>
+**系列问题：112. Path Sum**
+
+**只需要判断是否存在一条从根节点到叶子节点的路径之和等于target**
+```
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool mark;
+    void dfs(TreeNode *root, int s, int sum)
+    {
+        if(root->left == NULL && root->right == NULL)
+        {
+            if(s+root->val == sum) mark = true;
+            return;
+        }
+        if(root->left) dfs(root->left, s + root->val, sum);
+        if(root->right) dfs(root->right, s + root->val, sum);
+    }
+    bool hasPathSum(TreeNode* root, int sum) {
+        if(root == NULL) return false;
+        mark = false;
+        dfs(root, 0, sum);
+        return mark;
+    }
+};
+```
+

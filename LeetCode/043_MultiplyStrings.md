@@ -1,5 +1,54 @@
 **题意: 求大整数乘法，要求不可以将string转为integer，也不可以使用biginteger。**
 
+<br/>
+**用大整数加法实现大整数乘法**
+```
+class Solution {
+public:
+    string add(string a, string b)
+    {
+        int n = a.size(),  m = b.size();
+        string c(max(n, m), '0');
+        int num = 0;
+        for(int i = 0; i < max(n, m); i++)
+        {
+            if(i < n) num += (a[i]-'0');
+            if(i < m) num += (b[i]-'0');
+            c[i] = num % 10 + '0';
+            num /= 10;
+        }
+        if(num) c.push_back(num+'0');
+        return c;
+    }
+    string multiply(string a, string b) {
+        string ans(1, '0');
+        if(a == "0" || b == "0") return ans;
+        
+        reverse(a.begin(), a.end());
+        reverse(b.begin(), b.end());
+        int n = a.size(), m = b.size();
+        for(int i = 0; i < n; i++)
+        {
+            int mul = 0;
+            string tmp;
+            for(int k = 0; k < i; k++) tmp.push_back('0');
+            for(int j = 0; j < m; j++)
+            {
+                mul += (a[i]-'0')*(b[j]-'0');
+                tmp.push_back(mul%10 + '0');
+                mul /= 10;
+            }
+            if(mul) tmp.push_back(mul + '0');
+            ans = add(ans, tmp);
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+        
+    }
+};
+```
+
+<br/>
 ####有符号大整数运算的实现
 ```
 class Solution {
