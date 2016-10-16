@@ -62,6 +62,7 @@ public:
 <br/>
 **类似题目：111. Minimum Depth of Binary Tree。不同的是，如果节点只有一个孩子，那么最小深度就是孩子的深度。**
 
+**DFS写法**
 ```
 /**
  * Definition for a binary tree node.
@@ -86,6 +87,34 @@ public:
     int minDepth(TreeNode* root) {
         if(root == NULL) return 0;
         return dfs(root);
+    }
+};
+```
+**BFS写法，实际上做这个问题，bfs是高效的，因为每层每层的看节点，只要碰到节点没有子节点那么一定是最小深度。**
+```
+class Solution {
+public:
+    struct Node
+    {
+        TreeNode *root;
+        int level;
+    };
+    int minDepth(TreeNode* root) {
+        if(root == NULL) return 0;
+        queue<Node> q;
+        q.push(Node{root, 1});
+        while(!q.empty())
+        {
+            Node now = q.front();
+            q.pop();
+            if(now.root->left) q.push(Node{now.root->left, now.level+1});
+            if(now.root->right) q.push(Node{now.root->right, now.level+1});
+            if(now.root->left == NULL && now.root->right == NULL) 
+            {
+                return now.level;
+            }
+        }
+        return 0;
     }
 };
 ```
