@@ -69,6 +69,21 @@ As can be seen, the above solution runs in O(n^2) time and costs O(m*n) space. H
 class Solution {
 public:
     int uniquePaths(int n, int m) {
+        vector<int> dp(m, 1);
+        for(int i = 1; i < n; i++)
+        {
+            for(int j = 1; j < m; j++)
+            {
+                dp[j] = dp[j] + dp[j-1];
+            }
+        }
+        return dp[m-1];
+    }
+};
+
+class Solution {
+public:
+    int uniquePaths(int n, int m) {
         vector<int> cur(n, 1);
         for(int j = 1; j < m; j++)
         {
