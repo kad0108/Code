@@ -79,6 +79,37 @@ public:
 ```
 
 <br/>
+**滚动数组写法，第一维降成size为2**
+```
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+        bool dp[2][20005];
+        memset(dp, false, sizeof(dp));
+        int sum = 0;
+        int n = nums.size();
+        for(int i = 0; i < n; i++)
+        {
+            sum += nums[i];
+        }
+        if(sum & 1) return false;
+        dp[0][0] = true;
+        dp[0][nums[0]] = true;
+        for(int i = 1; i < n; i++)
+        {
+            int id = i & 1;
+            for(int j = 0; j <= sum; j++)
+            {
+                dp[id][j] = dp[id^1][j];
+                if(j-nums[i] >= 0) dp[id][j] |= dp[id^1][j-nums[i]];
+            }
+        }
+        return dp[(n-1)&1][sum/2];
+    }
+};
+```
+
+<br/>
 **看了discuss，递归写法，思想和dp是一样的**
 ```
 class Solution {
