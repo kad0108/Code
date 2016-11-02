@@ -9,7 +9,7 @@ public:
         int ans = 0;
         while(n)
         {
-            n /= 5;
+            n /= 5;//n/5得到n之前5的个数
             ans += n;
         }
         return ans;
