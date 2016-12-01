@@ -1,4 +1,4 @@
-# Todolist [demo](https://kad0108.github.io/Code/VueJS/Todolist)
+# Todolist
 
 > A Vue.js project
 
