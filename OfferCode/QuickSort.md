@@ -107,3 +107,24 @@ void bubble()
 	}
 }
 ```
+**实现O(n)的排序算法，辅助内存常量大小，排序应用环境为年龄**
+```c++
+void _sort(vector<int> num)
+{
+	vector<int> age(100, 0);//空间换时间
+	for(int i = 0; i < num.size(); i++)
+	{
+		age[num[i]]++;
+	}
+	int idx = 0;
+	for(int i = 0; i < age.size(); i++)
+	{
+		for(int j = 0; j < age[i]; j++)
+		{
+			num[idx++] = i;
+		}
+	}
+	for(int i = 0; i < num.size(); i++) cout<<num[i]<<" ";
+	cout<<endl;
+}
+```
