@@ -50,3 +50,49 @@ string _minus(string &a, string &b)//大数－小数
     return c;
 }
 ```
+
+<br/>
+**大整数乘法**
+
+```c++
+string add(string a, string b){
+    string c;
+    // reverse(a.begin(), a.end());
+    // reverse(b.begin(), b.end());
+    int num = 0;
+    for(int i = 0; i < max(a.size(), b.size()); i++){
+        if(i < a.size()) num += (a[i]-'0');
+        if(i < b.size()) num += (b[i]-'0');
+        c.push_back(num % 10 + '0');
+        num /= 10;
+    }
+    if(num) c.push_back(num+'0');
+    // reverse(c.begin(), c.end());
+    return c;
+}
+
+string multiply(string a, string b){
+    string c;
+    reverse(a.begin(), a.end());
+    reverse(b.begin(), b.end());
+    int num = 0;
+    string tmp;
+    for(int j = 0; j < b.size(); j++){
+        int digit = j;
+        while(digit--) tmp.push_back('0');
+        for(int i = 0; i < a.size(); i++){
+            num += (a[i]-'0')*(b[j]-'0');
+            tmp.push_back(num % 10 + '0');
+            num /= 10;
+        }
+        if(num) {
+            tmp.push_back(num+'0');
+            num = 0;
+        }
+        c = add(c, tmp);
+        tmp.clear();
+    }
+    reverse(c.begin(), c.end());
+    return c;
+}
+```
