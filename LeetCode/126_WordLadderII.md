@@ -73,10 +73,13 @@ private:
 ```
 
 <br/>
+
 **本题题意：输出所有从begin单词到end单词的最短变换路径**
 
 <br/>
+
 **样例：**
+
 ```
 Given:
 beginWord = "hit"
@@ -90,7 +93,9 @@ Return
 ```
 
 <br/>
+
 **解：bfs＋dfs。记录路径很明显需要map映射，开始想的是记录前驱结点，bfs找到end结点然后回溯根据前驱结点逆着找路径。实际上只需要构造字典中结点到begin的距离即可也就是map，然后从end向前深搜直到找到距离begin的距离为1。**
+
 ```
 struct Node{
     int cot;
