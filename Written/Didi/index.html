@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function parseUrl(url, key){
+			var str = url.split('?')[1];
+			var arr = str.split('&');
+			obj = {};
+			arr.forEach(function(item){
+				var tmp = item.split('=');
+				obj[tmp[0]] = tmp[1];
+			})
+			return obj[key];
+		}
+		console.log(parseUrl('http://www.didichuxing.com/manage?a=1&b=2&c=3', 'a'));
+	</script>
+</body>
+</html>
