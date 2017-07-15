@@ -1,7 +1,7 @@
 **题意：找出无序数组中第k大的数，注意不是第k个不同的值, `Given [3,2,1,5,6,4] and k = 2, return 5.`**
 
 <br/>
-**解法一：O(nlogn) time & O(1) space**
+**解法一：O(nlogn) time & O(1) space.**
 
 ```
 bool cmp(int a, int b)
@@ -51,6 +51,7 @@ private:
 
 <br/>
 **解法三：O(nlogk) time & O(k) space. 维护一个k大小的小顶堆，存放前k大的数。最后的得到的堆顶元素就是第k大的数。**
+
 ```
 class Solution {
 public:
