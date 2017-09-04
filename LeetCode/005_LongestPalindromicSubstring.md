@@ -1,6 +1,7 @@
 **题意：给出字符串的最长回文子串。**
 
 <br/>
+
 **TLE解法：O(n^3) 试探所有情况的两端位置向中间验证**
 
 ```
@@ -57,7 +58,9 @@ public:
 };
 ```
 <br/>
+
 **AC： O(n^2) 枚举回文串的中心位置**
+
 ```
 class Solution {
 public:
@@ -126,6 +129,7 @@ struct Node
 ```
 
 <br/>
+
 **AC：Manacher算法 线性时间O(n)**
 
 **教程：[马拉车算法](https://segmentfault.com/a/1190000003914228)**
